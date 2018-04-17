@@ -1,12 +1,13 @@
-sudo: required
+os: windows
 env:
   global:
     - DOCKER_REPO=kenorb/dev-env-windows
 services:
   - docker
 script:
+  - docker pull microsoft/powershell
   - make
 after_success:
-  - docker run $DOCKER_REPO
+  - docker run $DOCKER_REPO dir /
 after_script:
   - docker images
