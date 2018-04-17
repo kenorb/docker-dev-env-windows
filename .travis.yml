@@ -1,0 +1,12 @@
+sudo: required
+env:
+  global:
+    - DOCKER_REPO=kenorb/dev-env-windows
+services:
+  - docker
+script:
+  - make
+after_success:
+  - docker run $DOCKER_REPO
+after_script:
+  - docker images
